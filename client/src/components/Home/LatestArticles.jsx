@@ -1,0 +1,87 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+const LatestArticles = () => {
+  const [posts, usePosts] = useState([]);
+  useEffect(() => {
+    axios.get("/api/getposts").then((response) => {
+      usePosts(response.data.posts);
+    });
+  }, []);
+  return (
+    <div>
+      <div className="hero">
+        <div className="hero-content">
+          <div className="max-w-md">
+            <h2 className="text-3xl font-bold">اخر المقالات</h2>
+          </div>
+        </div>
+      </div>
+
+      {posts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {posts.slice(0, 3).map((items, key) => (
+            <div
+              className="card card-compact bg-base-100 shadow-xl mt-6"
+              key={key}
+            >
+              <figure>
+                <img src={items.img} alt="Album" />
+              </figure>
+              <div className="card-body relative">
+                <Link
+                  className="card-title relative before:content before:w-10 hover:before:w-full before:h-10 before:bg-primary before:opacity-10 before:absolute before:right-0 before:top-1/2 before:-translate-y-1/2 before:rounded-tl-[50px] before:rounded-br-[50px] before:rounded-tr-[10px] before:rounded-bl-[10px] before:transition-all"
+                  to={`/blog/${items.href}`}
+                >
+                  {items.title}
+                </Link>
+                <p>{items.desc}</p>
+                <div className="card-actions justify-end">
+                  <Link
+                    to={"/category/" + items.category}
+                    className="badge badge-outline"
+                  >
+                    {items.category}
+                  </Link>{" "}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="alert alert-error shadow-lg">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current flex-shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>
+              للاسف توجد مشكله الان و سيتم حلها باسرع وقت و اذا لم يتم حلها
+              يمكنك التواصل معي{" "}
+              <a
+                href="https://www.marwan.gq/contact"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                و هنا توجد كل الطرق للتواصل معي
+              </a>
+            </span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default LatestArticles;

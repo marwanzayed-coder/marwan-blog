@@ -1,0 +1,34 @@
+{
+  "src/main.css": {
+    "file": "assets/main-67a6b37c.css",
+    "src": "src/main.css"
+  },
+  "src/components/Home/LatestArticles.jsx": {
+    "file": "assets/LatestArticles-3b0ce8b7.js",
+    "src": "src/components/Home/LatestArticles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.jsx"
+    ]
+  },
+  "src/components/blog/Posts.jsx": {
+    "file": "assets/Posts-aac6c13c.js",
+    "src": "src/components/blog/Posts.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.jsx"
+    ]
+  },
+  "src/main.jsx": {
+    "file": "assets/main-ed6ba7bb.js",
+    "src": "src/main.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/components/Home/LatestArticles.jsx",
+      "src/components/blog/Posts.jsx"
+    ],
+    "css": [
+      "assets/main-67a6b37c.css"
+    ]
+  }
+}

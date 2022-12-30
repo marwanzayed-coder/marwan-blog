@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
+.blog-body {
+  @apply text-lg;
+}
+.blog-body p {
+  @apply bg-base-100 p-3 mb-1;
+}
+.blog-body h3 {
+  @apply bg-base-100 p-3 text-primary text-2xl;
+}
+.blog-body a {
+  @apply text-blue-500;
+}
+.blog-body ul {
+  @apply bg-base-100 p-3 my-3;
+}
+.blog-body ul li {
+  @apply bg-base-300 p-3 my-3;
+}
+.top-to-btm {
+  @apply relative;
+}
+.icon-position {
+  @apply fixed bottom-11 right-7 z-20;
+}
+.icon-style {
+  @apply bg-base-300 p-2 rounded-full h-12 w-12 cursor-pointer;
+}
+.mockup-code {
+  position: relative;
+  overflow: hidden;
+  overflow-x: auto;
+  min-width: 18rem;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  --tw-text-opacity: 1;
+  color: hsl(var(--nc) / var(--tw-text-opacity));
+  border-radius: var(--rounded-box, 1rem);
+  margin: 15px 0;
+}
+.mockup-code::before {
+  content: "";
+  margin-bottom: 1rem;
+  display: block;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+  opacity: 0.3;
+  box-shadow: 1.4em 0, 2.8em 0, 4.2em 0;
+}
+.mockup-code pre {
+  padding-right: 1.25rem;
+}
+.mockup-code pre[data-prefix]:before {
+  content: attr(data-prefix);
+  display: inline-block;
+  text-align: right;
+  width: 2rem;
+  opacity: 0.5;
+}
+.mockup-code pre code {
+  margin-left: 10px;
+}
+.emoji-404 {
+  position: relative;
+  animation: mymove 2.5s infinite;
+}
+
+@keyframes mymove {
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: 20px;
+  }
+  100% {
+    top: 0px;
+  }
+}
