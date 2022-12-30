@@ -14,7 +14,7 @@ const app = express();
 const httpServer = createServer(app);
 const limiter = rateLimit({
   windowMs: 1000,
-  max: 20,
+  max: 5,
 });
 
 app.use(cors());
