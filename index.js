@@ -3,7 +3,6 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { createServer } from "http";
-import rateLimit from "express-rate-limit";
 import bodyParser from "body-parser";
 import path from "path";
 import { PostRouter } from "./routers/articles.js";
@@ -12,14 +11,9 @@ import { PostRouter } from "./routers/articles.js";
 const PORT = process.env.PORT || 3050;
 const app = express();
 const httpServer = createServer(app);
-const limiter = rateLimit({
-  windowMs: 1000,
-  max: 5,
-});
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(limiter);
 
 // Database Configuration
 const connectToDB = async () => {
