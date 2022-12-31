@@ -22,7 +22,6 @@ app.use(bodyParser.json());
 app.use(limiter);
 
 // Database Configuration
-mongoose.set("strictQuery", false);
 const connectToDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL);
