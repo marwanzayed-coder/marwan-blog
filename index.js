@@ -36,9 +36,9 @@ app.use("/api", PostRouter);
 
 const __dirname = path.resolve();
 if (process.env.NODE_ENV == "production") {
-  app.use(express.static(`${__dirname}/client/dist`));
+  app.use(express.static(`${__dirname}/client/build`));
   app.get("*", (req, res) => {
-    res.sendFile(`${__dirname}/client/index.html`);
+    res.sendFile(`${__dirname}/client/build/index.html`);
   });
 }
 

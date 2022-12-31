@@ -1,18 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 // import Prism from "prismjs";
 
 // Prism.manual = true;
 // Prism.highlightAll();
 const BlogPage = () => {
   const { href } = useParams();
-  const [post, usePost] = useState([]);
+  const [post, setPost] = useState([]);
   useEffect(() => {
     axios.get("/api/getpost/" + href).then((response) => {
-      usePost(response.data.post[0]);
+      setPost(response.data.post[0]);
     });
-  }, []);
+  }, [href]);
   return (
     <div>
       <div className="container">

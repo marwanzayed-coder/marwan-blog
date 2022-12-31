@@ -37,6 +37,7 @@ const Footer = () => {
           target="_blank"
           className="tooltip tooltip-primary"
           data-tip="Facebook"
+          rel="noreferrer"
         >
           <FaFacebookF className="text-3xl" />
         </a>
@@ -45,6 +46,7 @@ const Footer = () => {
           target="_blank"
           className="tooltip tooltip-primary"
           data-tip="Github"
+          rel="noreferrer"
         >
           <FaGithub className="text-3xl" />
         </a>
@@ -53,6 +55,7 @@ const Footer = () => {
           target="_blank"
           className="tooltip tooltip-primary"
           data-tip="My Website"
+          rel="noreferrer"
         >
           <BsWindow className="text-3xl" />
         </a>

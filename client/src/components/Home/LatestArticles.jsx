@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const LatestArticles = () => {
-  const [posts, usePosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     axios.get("/api/getposts").then((response) => {
-      usePosts(response.data.posts);
+      setPosts(response.data.posts);
     });
   }, []);
   return (

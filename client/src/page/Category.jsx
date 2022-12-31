@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { Link, useParams } from "react-router-dom";
 
 const Category = () => {
-  const [posts, usePosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   const { text } = useParams();
 
   useEffect(() => {
     axios.get("/api/getposts").then((response) => {
-      usePosts(response.data.posts);
+      setPosts(response.data.posts);
     });
   }, []);
   const newposts = posts.filter((post) => {

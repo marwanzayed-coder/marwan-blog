@@ -1,12 +1,13 @@
+/* eslint-disable array-callback-return */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [category, useCategory] = useState([]);
+  const [category, setCategory] = useState([]);
   useEffect(() => {
     axios.get("/api/getposts").then((response) => {
-      useCategory(response.data.posts);
+      setCategory(response.data.posts);
     });
   }, []);
   const categorys = [];
