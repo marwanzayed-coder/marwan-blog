@@ -4,22 +4,18 @@ import { Link } from "react-router-dom";
 
 const LatestArticles = () => {
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(false);
   useEffect(() => {
-    axios.get("/api/getposts").then((response) => {
-      setPosts(response.data.posts);
-    });
+    axios
+      .get("/api/getposts")
+      .then((response) => {
+        setPosts(response.data.posts);
+      })
+      .catch((err) => setError(true));
   }, []);
-  return (
-    <div>
-      <div className="hero">
-        <div className="hero-content">
-          <div className="max-w-md">
-            <h2 className="text-3xl font-bold">اخر المقالات</h2>
-          </div>
-        </div>
-      </div>
-
-      {posts.length > 0 ? (
+  const html = (
+    <>
+      {!error ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {posts.slice(0, 3).map((items, key) => (
             <div
@@ -80,6 +76,18 @@ const LatestArticles = () => {
           </div>
         </div>
       )}
+    </>
+  );
+  return (
+    <div>
+      <div className="hero">
+        <div className="hero-content">
+          <div className="max-w-md">
+            <h2 className="text-3xl font-bold">اخر المقالات</h2>
+          </div>
+        </div>
+      </div>
+      {html}
     </div>
   );
 };

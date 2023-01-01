@@ -5,12 +5,17 @@ import { Link, useParams } from "react-router-dom";
 
 const Category = () => {
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(false);
+
   const { text } = useParams();
 
   useEffect(() => {
-    axios.get("/api/getposts").then((response) => {
-      setPosts(response.data.posts);
-    });
+    axios
+      .get("/api/getposts")
+      .then((response) => {
+        setPosts(response.data.posts);
+      })
+      .catch((err) => setError(true));
   }, []);
   const newposts = posts.filter((post) => {
     return post.category.startsWith(text) ? post : false;
@@ -44,7 +49,7 @@ const Category = () => {
         </div>
       </div>
       <div>
-        {currentItems.length > 0 ? (
+        {!error ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {currentItems.map((items, key) => (
               <div
