@@ -10,7 +10,7 @@ const Error = () => {
         <center>
           <svg
             className="emoji-404 "
-            enable-background="new 0 0 226 249.135"
+            enableBackground="new 0 0 226 249.135"
             height="249.135"
             id="Layer_1"
             overflow="visible"
@@ -21,7 +21,7 @@ const Error = () => {
           >
             <circle cx="113" cy="113" fill="#FFE585" r="109"></circle>
             <line
-              enableBackground="new    "
+              enableBackground="new"
               fill="none"
               opacity="0.29"
               stroke="#6E6E96"

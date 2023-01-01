@@ -20,7 +20,6 @@ const Category = () => {
   const newposts = posts.filter((post) => {
     return post.category.startsWith(text) ? post : false;
   });
-
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 9;
 
@@ -49,7 +48,7 @@ const Category = () => {
         </div>
       </div>
       <div>
-        {!error ? (
+        {currentItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {currentItems.map((items, key) => (
               <div
