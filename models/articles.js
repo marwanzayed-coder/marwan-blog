@@ -9,6 +9,7 @@ const ArticlesSchema = Schema({
   body: String,
   category: String,
   tags: [String],
+  views: Number,
 });
 
 export default mongoose.model("Articles", ArticlesSchema);

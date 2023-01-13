@@ -1,11 +1,11 @@
 {
   "name": "blog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --trace-deprecation index.js"
+    "start": "nodemon  index.js"
   },
   "keywords": [],
   "author": "",

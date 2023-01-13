@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import ArticlesSchema from "../models/articles.js";
 
 export const ArticlesController = {
@@ -29,6 +30,15 @@ export const ArticlesController = {
   async getPost(req, res) {
     try {
       const post = await ArticlesSchema.find({ href: req.params.href });
+
+      const ArticlesObjectId = mongoose.Types.ObjectId(post[0]._id);
+
+      ArticlesSchema.updateOne(
+        { _id: ArticlesObjectId },
+        { $set: { views: post[0].views + 1 } }
+      ).catch((error) => {
+        console.log(error);
+      });
       res.status(200).json({
         msg: "Get Post!",
         post: post,

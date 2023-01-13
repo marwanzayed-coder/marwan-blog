@@ -18,6 +18,10 @@ const Navbar = () => {
     };
     categorys.push(object);
   });
+  const ids = categorys.map((o) => o.id);
+  const CategorysFiltered = categorys.filter(({ id }, index) =>
+    ids.includes(id, index + 1)
+  );
   return (
     <div className="navbar bg-base-100 shadow-md">
       <div className="container flex-col gap-3 sm:flex-row items-center">
@@ -71,7 +75,7 @@ const Navbar = () => {
                 </svg>
               </span>
               <ul className="p-2 bg-base-100 shadow-md">
-                {categorys.map((category, key) => (
+                {CategorysFiltered.map((category, key) => (
                   <li key={key}>
                     <NavLink to={`/category/${category.href}`}>
                       {category.text}

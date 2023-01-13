@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { AiOutlineEye } from "react-icons/ai";
 import ReactPaginate from "react-paginate";
 import { Link, useParams } from "react-router-dom";
 
@@ -48,7 +49,7 @@ const Category = () => {
         </div>
       </div>
       <div>
-        {currentItems.length > 0 ? (
+        {currentItems.reverse().length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {currentItems.map((items, key) => (
               <div
@@ -66,13 +67,17 @@ const Category = () => {
                     {items.title}
                   </Link>
                   <p>{items.desc}</p>
-                  <div className="card-actions justify-end">
+                  <div className="card-actions justify-between items-center">
                     <Link
                       to={"/category/" + items.category}
-                      className="badge badge-outline"
+                      className="btn btn-primary p-1 py-1 min-h-fit h-fit"
                     >
                       {items.category}
-                    </Link>{" "}
+                    </Link>
+                    <span className="flex items-center gap-2 text-lg">
+                      <AiOutlineEye />
+                      {items.views}
+                    </span>
                   </div>
                 </div>
               </div>

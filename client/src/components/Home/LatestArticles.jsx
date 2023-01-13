@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineEye } from "react-icons/ai";
 
 const LatestArticles = () => {
   const [posts, setPosts] = useState([]);
@@ -17,33 +18,40 @@ const LatestArticles = () => {
     <>
       {!error ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {posts.slice(0, 3).map((items, key) => (
-            <div
-              className="card card-compact bg-base-100 shadow-xl mt-6"
-              key={key}
-            >
-              <figure>
-                <img src={items.img} alt="Album" />
-              </figure>
-              <div className="card-body relative">
-                <Link
-                  className="card-title relative before:content before:w-10 hover:before:w-full before:h-10 before:bg-primary before:opacity-10 before:absolute before:right-0 before:top-1/2 before:-translate-y-1/2 before:rounded-tl-[50px] before:rounded-br-[50px] before:rounded-tr-[10px] before:rounded-bl-[10px] before:transition-all"
-                  to={`/blog/${items.href}`}
-                >
-                  {items.title}
-                </Link>
-                <p>{items.desc}</p>
-                <div className="card-actions justify-end">
+          {posts
+            .slice(-3)
+            .reverse()
+            .map((items, key) => (
+              <div
+                className="card card-compact bg-base-100 shadow-xl mt-6"
+                key={key}
+              >
+                <figure>
+                  <img src={items.img} alt="Album" />
+                </figure>
+                <div className="card-body relative">
                   <Link
-                    to={"/category/" + items.category}
-                    className="badge badge-outline"
+                    className="card-title relative before:content before:w-10 hover:before:w-full before:h-10 before:bg-primary before:opacity-10 before:absolute before:right-0 before:top-1/2 before:-translate-y-1/2 before:rounded-tl-[50px] before:rounded-br-[50px] before:rounded-tr-[10px] before:rounded-bl-[10px] before:transition-all"
+                    to={`/blog/${items.href}`}
                   >
-                    {items.category}
-                  </Link>{" "}
+                    {items.title}
+                  </Link>
+                  <p>{items.desc}</p>
+                  <div className="card-actions justify-between items-center">
+                    <Link
+                      to={"/category/" + items.category}
+                      className="btn btn-primary p-1 py-1 min-h-fit h-fit"
+                    >
+                      {items.category}
+                    </Link>
+                    <span className="flex items-center gap-2 text-lg">
+                      <AiOutlineEye />
+                      {items.views}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <div className="alert alert-error shadow-lg">
