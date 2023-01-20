@@ -11,17 +11,29 @@ const Navbar = () => {
     });
   }, []);
   const categorys = [];
-  category.map((post) => {
+  category.map((post, index) => {
     const object = {
       href: post.category,
       text: post.category,
     };
     categorys.push(object);
   });
-  const ids = categorys.map((o) => o.id);
-  const CategorysFiltered = categorys.filter(({ id }, index) =>
-    ids.includes(id, index + 1)
-  );
+
+  function removeDuplicateCategorysFrom(sentence) {
+    let wordsList = [];
+    for (let i = 0; i < sentence.length; i++) {
+      wordsList.push(sentence[i].href);
+    }
+    let result = [];
+    for (let i = 0; i < wordsList.length; i++) {
+      if (result.indexOf(wordsList[i]) === -1) {
+        result.push(wordsList[i]);
+      }
+    }
+    return result;
+  }
+  let CategorysFiltered = removeDuplicateCategorysFrom(categorys);
+  console.log(CategorysFiltered);
   return (
     <div className="navbar bg-base-100 shadow-md">
       <div className="container flex-col gap-3 sm:flex-row items-center">
@@ -77,9 +89,7 @@ const Navbar = () => {
               <ul className="p-2 bg-base-100 shadow-md">
                 {CategorysFiltered.map((category, key) => (
                   <li key={key}>
-                    <NavLink to={`/category/${category.href}`}>
-                      {category.text}
-                    </NavLink>
+                    <NavLink to={`/category/${category}`}>{category}</NavLink>
                   </li>
                 ))}
               </ul>
