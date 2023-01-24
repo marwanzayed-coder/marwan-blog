@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable array-callback-return */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -39,7 +40,7 @@ const Navbar = () => {
       <div className="container flex-col gap-3 sm:flex-row items-center">
         <div>
           <Link to="/" className="normal-case">
-            <img src="/logo.png" />
+            <img src="/logo.png" className="w-12" />
           </Link>
         </div>
         <div className="flex-1 text-left">
